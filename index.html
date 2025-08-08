@@ -1,50 +1,124 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Class of 2030</title>
-    <link rel="stylesheet" href="style.css" />
-    <script defer src="script.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Class of 2030</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+  <script defer src="script.js"></script>
 </head>
-<body>
-    <header>
-        <h1>Class of 2030</h1>
-        <p>Your hub for announcements, events, and graduation countdown</p>
-    </header>
+<body class="bg-gray-50 text-gray-800">
 
-    <main>
-        <section id="announcements">
-            <h2>📢 Announcements</h2>
-            <ul>
-                <li>Welcome back to school! Let's make this year unforgettable.</li>
-                <li>Senior photos will be taken next week. Stay tuned for your schedule.</li>
-                <li>Submit yearbook quotes by the end of this month.</li>
-            </ul>
-        </section>
+  <!-- Header -->
+  <header class="bg-gradient-to-r from-blue-900 to-red-700 text-white shadow-lg">
+    <div class="container mx-auto px-4 py-6 flex justify-between items-center">
+      <div class="flex items-center space-x-4">
+        <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center">
+          <i class="fas fa-graduation-cap text-2xl text-blue-900"></i>
+        </div>
+        <div>
+          <h1 class="text-2xl font-bold">Class of 2030</h1>
+          <p class="text-sm opacity-80">Your hub for announcements, events, and countdown</p>
+        </div>
+      </div>
+    </div>
+  </header>
 
-        <section id="events">
-            <h2>📅 Upcoming Events</h2>
-            <ul>
-                <li>🏆 Sports Day – September 20, 2025</li>
-                <li>🎤 Talent Show – October 10, 2025</li>
-                <li>🎓 Graduation Ceremony – June 15, 2030</li>
-            </ul>
-        </section>
+  <!-- Hero -->
+  <section class="bg-gradient-to-r from-blue-900 to-red-700 text-white py-16">
+    <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
+      <div class="md:w-1/2 mb-8 md:mb-0">
+        <h2 class="text-4xl font-bold mb-4">Welcome, BAC!</h2>
+        <p class="text-lg mb-6">Let’s make this year unforgettable — stay updated with announcements, events, and our graduation countdown.</p>
+        <a href="#events" class="bg-white text-gray-800 px-6 py-2 rounded-full font-semibold hover:bg-gray-200 transition">View Events</a>
+      </div>
+      <div class="md:w-1/2 flex justify-center">
+        <img src="https://cdn-icons-png.flaticon.com/512/3135/3135773.png" alt="Graduation" class="w-64">
+      </div>
+    </div>
+  </section>
 
-        <section id="countdown">
-            <h2>🎓 Graduation Countdown</h2>
-            <div id="timer">Loading countdown...</div>
-        </section>
+  <!-- Announcements -->
+  <section id="announcements" class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-12">📢 Announcements</h2>
+      <div class="space-y-4 max-w-3xl mx-auto">
+        <div class="bg-gray-50 p-4 rounded-lg shadow">
+          Welcome back to school! Let's make this year unforgettable.
+        </div>
+        <div class="bg-gray-50 p-4 rounded-lg shadow">
+          Senior photos will be taken next week. Stay tuned for your schedule.
+        </div>
+        <div class="bg-gray-50 p-4 rounded-lg shadow">
+          Submit yearbook quotes by the end of this month.
+        </div>
+      </div>
+    </div>
+  </section>
 
-        <section id="contact">
-            <h2>📬 Contact Us</h2>
-            <p>Have something to share? <a href="https://forms.gle/your-form-link" target="_blank" rel="noopener noreferrer">Submit a form</a> or reach out to a senior committee member.</p>
-        </section>
-    </main>
+  <!-- Events -->
+  <section id="events" class="py-16 bg-gray-100">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-12">📅 Upcoming Events</h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-white rounded-lg shadow p-6">
+          <h3 class="font-bold text-lg mb-2">🏆 Sports Day</h3>
+          <p class="text-gray-600 mb-2">September 20, 2025</p>
+          <p class="text-gray-500">A day of fun, competition, and school spirit!</p>
+        </div>
+        <div class="bg-white rounded-lg shadow p-6">
+          <h3 class="font-bold text-lg mb-2">🎤 Talent Show</h3>
+          <p class="text-gray-600 mb-2">October 10, 2025</p>
+          <p class="text-gray-500">Show off your skills in our annual talent show.</p>
+        </div>
+        <div class="bg-white rounded-lg shadow p-6">
+          <h3 class="font-bold text-lg mb-2">🎓 Graduation Ceremony</h3>
+          <p class="text-gray-600 mb-2">June 15, 2030</p>
+          <p class="text-gray-500">Celebrate the end of our journey together.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <footer>
-        <p>© 2025 Class of 2030. All rights reserved.</p>
-    </footer>
+  <!-- Countdown -->
+  <section id="countdown" class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-8">🎓 Graduation Countdown</h2>
+      <div class="flex justify-center space-x-6 text-center">
+        <div>
+          <div id="days" class="text-4xl font-bold">00</div>
+          <div class="text-sm text-gray-500">Days</div>
+        </div>
+        <div>
+          <div id="hours" class="text-4xl font-bold">00</div>
+          <div class="text-sm text-gray-500">Hours</div>
+        </div>
+        <div>
+          <div id="minutes" class="text-4xl font-bold">00</div>
+          <div class="text-sm text-gray-500">Minutes</div>
+        </div>
+        <div>
+          <div id="seconds" class="text-4xl font-bold">00</div>
+          <div class="text-sm text-gray-500">Seconds</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="py-16 bg-gray-100">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-3xl font-bold mb-6">📬 Contact Us</h2>
+      <p class="mb-4">Have something to share? <a href="https://forms.gle/your-form-link" target="_blank" class="text-blue-600 font-semibold hover:underline">Submit a form</a> or reach out to a senior committee member.</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white py-6 text-center">
+    <p>© 2025 Class of 2030. All rights reserved.</p>
+  </footer>
+
 </body>
 </html>
