@@ -8,13 +8,26 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="style.css">
   <script defer src="script.js"></script>
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.8s ease-out;
+    }
+    .fade-in.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
 
   <!-- Header -->
   <header class="bg-gradient-to-r from-blue-900 to-red-700 text-white shadow-lg relative">
     <div class="container mx-auto px-4 py-6 flex justify-between items-center">
-      <!-- Logo & Title -->
       <div class="flex items-center space-x-4">
         <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center">
           <i class="fas fa-graduation-cap text-2xl text-blue-900"></i>
@@ -25,7 +38,6 @@
         </div>
       </div>
 
-      <!-- Desktop Nav -->
       <nav class="hidden md:flex space-x-8">
         <a href="#announcements" class="hover:underline">Announcements</a>
         <a href="#events" class="hover:underline">Events</a>
@@ -33,13 +45,11 @@
         <a href="#contact" class="hover:underline">Contact</a>
       </nav>
 
-      <!-- Mobile Menu Button -->
       <button id="menu-toggle" class="md:hidden text-white focus:outline-none">
         <i class="fas fa-bars text-2xl"></i>
       </button>
     </div>
 
-    <!-- Mobile Menu -->
     <div id="mobile-menu" class="hidden flex-col bg-white text-gray-800 md:hidden shadow-lg absolute left-0 right-0 top-full">
       <a href="#announcements" class="px-4 py-2 border-b border-gray-200 hover:bg-gray-100">Announcements</a>
       <a href="#events" class="px-4 py-2 border-b border-gray-200 hover:bg-gray-100">Events</a>
@@ -49,7 +59,7 @@
   </header>
 
   <!-- Hero -->
-  <section class="bg-gradient-to-r from-blue-900 to-red-700 text-white py-16">
+  <section class="bg-gradient-to-r from-blue-900 to-red-700 text-white py-16 fade-in">
     <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
       <div class="md:w-1/2 mb-8 md:mb-0">
         <h2 class="text-4xl font-bold mb-4 text-white">Welcome Back, BAC!</h2>
@@ -63,7 +73,7 @@
   </section>
 
   <!-- Announcements -->
-  <section id="announcements" class="py-16 bg-white">
+  <section id="announcements" class="py-16 bg-white fade-in">
     <div class="container mx-auto px-4">
       <h2 class="text-3xl font-bold text-center mb-12">📢 Announcements</h2>
       <div class="space-y-4 max-w-3xl mx-auto">
@@ -81,7 +91,7 @@
   </section>
 
   <!-- Events -->
-  <section id="events" class="py-16 bg-gray-100">
+  <section id="events" class="py-16 bg-gray-100 fade-in">
     <div class="container mx-auto px-4">
       <h2 class="text-3xl font-bold text-center mb-12">📅 Upcoming Events</h2>
       <div class="grid md:grid-cols-3 gap-8">
@@ -105,45 +115,54 @@
   </section>
 
   <!-- Countdown -->
-  <section id="countdown" class="py-16 bg-white">
+  <section id="countdown" class="py-16 bg-white fade-in">
     <div class="container mx-auto px-4">
       <h2 class="text-3xl font-bold text-center mb-8">🎓 Graduation Countdown</h2>
       <div class="flex justify-center space-x-6 text-center">
-        <div>
+        <div class="backdrop-filter backdrop-blur-md bg-white/20 border border-white/30 rounded-lg shadow-lg p-4 w-20 transform hover:scale-105 transition">
           <div id="days" class="text-4xl font-bold">00</div>
-          <div class="text-sm text-gray-500">Days</div>
+          <div class="text-sm text-gray-200">Days</div>
         </div>
-        <div>
+        <div class="backdrop-filter backdrop-blur-md bg-white/20 border border-white/30 rounded-lg shadow-lg p-4 w-20 transform hover:scale-105 transition">
           <div id="hours" class="text-4xl font-bold">00</div>
-          <div class="text-sm text-gray-500">Hours</div>
+          <div class="text-sm text-gray-200">Hours</div>
         </div>
-        <div>
+        <div class="backdrop-filter backdrop-blur-md bg-white/20 border border-white/30 rounded-lg shadow-lg p-4 w-20 transform hover:scale-105 transition">
           <div id="minutes" class="text-4xl font-bold">00</div>
-          <div class="text-sm text-gray-500">Minutes</div>
+          <div class="text-sm text-gray-200">Minutes</div>
         </div>
-        <div>
+        <div class="backdrop-filter backdrop-blur-md bg-white/20 border border-white/30 rounded-lg shadow-lg p-4 w-20 transform hover:scale-105 transition">
           <div id="seconds" class="text-4xl font-bold">00</div>
-          <div class="text-sm text-gray-500">Seconds</div>
+          <div class="text-sm text-gray-200">Seconds</div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Contact -->
-  <section id="contact" class="py-16 bg-gray-100">
+  <section id="contact" class="py-16 bg-gray-100 fade-in">
     <div class="container mx-auto px-4 text-center">
       <h2 class="text-3xl font-bold mb-6">📬 Contact Us</h2>
-      <p class="mb-4">Have something to share? <a href="https://forms.gle/your-form-link" target="_blank" class="text-blue-600 font-semibold hover:underline">Submit a form</a> or reach out to a senior committee member.</p>
+      <p class="mb-4">
+        Have something to share? 
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfLQ4xCmJo_f8BK3JANWO8Ashedz9E_1lwMSgIkgmj28hbE7g/viewform?usp=header" 
+           target="_blank" 
+           class="text-blue-600 font-semibold hover:underline">
+           Submit a form
+        </a> 
+        or reach out to a senior committee member.
+      </p>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="bg-gray-900 text-white py-6 text-center">
+  <footer class="bg-gray-900 text-white py-6 text-center fade-in">
     <p>© 2025 Class of 2030. All rights reserved.</p>
   </footer>
 
-  <!-- Mobile Menu Script -->
+  <!-- Scripts -->
   <script>
+    // Mobile Menu
     const menuToggle = document.getElementById('menu-toggle');
     const mobileMenu = document.getElementById('mobile-menu');
     const menuLinks = mobileMenu.querySelectorAll('a');
@@ -156,6 +175,22 @@
       link.addEventListener('click', () => {
         mobileMenu.classList.add('hidden');
       });
+    });
+
+    // Scroll Animation
+    const faders = document.querySelectorAll('.fade-in');
+    const appearOptions = { threshold: 0.1 };
+
+    const appearOnScroll = new IntersectionObserver(function(entries, observer) {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('show');
+        observer.unobserve(entry.target);
+      });
+    }, appearOptions);
+
+    faders.forEach(fader => {
+      appearOnScroll.observe(fader);
     });
   </script>
 
