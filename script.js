@@ -1,41 +1,49 @@
-// Mobile menu toggle (if you have a mobile menu)
-const menuToggle = document.getElementById('menu-toggle');
-const mobileMenu = document.getElementById('mobile-menu');
+// Countdown date (Sunday, 10 August 2025)
+const countdownDate = new Date("August 10, 2025 00:00:00").getTime();
 
-if (menuToggle) {
-    menuToggle.addEventListener('click', () => {
-        mobileMenu.classList.toggle('active');
-    });
-}
-
-// Flip animation helper
-function animateFlip(id, newValue) {
-    const element = document.getElementById(id);
-    if (element.innerText !== newValue.toString().padStart(2, "0")) {
-        element.classList.add("flip");
-        setTimeout(() => {
-            element.innerText = newValue.toString().padStart(2, "0");
-            element.classList.remove("flip");
-        }, 250);
-    }
-}
-
-// Countdown timer
 function updateCountdown() {
-    const graduationDate = new Date('August 10, 2025 12:00:00').getTime();
     const now = new Date().getTime();
-    const distance = graduationDate - now;
+    const distance = countdownDate - now;
 
     const days = Math.floor(distance / (1000 * 60 * 60 * 24));
     const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-    animateFlip("days", days >= 0 ? days : 0);
-    animateFlip("hours", hours >= 0 ? hours : 0);
-    animateFlip("minutes", minutes >= 0 ? minutes : 0);
-    animateFlip("seconds", seconds >= 0 ? seconds : 0);
+    setFlipValue("days", days);
+    setFlipValue("hours", hours);
+    setFlipValue("minutes", minutes);
+    setFlipValue("seconds", seconds);
+
+    if (distance < 0) {
+        clearInterval(timerInterval);
+        document.getElementById("countdown").innerHTML = "Event Started!";
+    }
 }
 
+// Adds flip animation when value changes
+function setFlipValue(id, newValue) {
+    const el = document.getElementById(id);
+    const currentValue = el.textContent;
+
+    if (currentValue !== String(newValue).padStart(2, "0")) {
+        el.textContent = String(newValue).padStart(2, "0");
+        el.classList.remove("flip");
+        void el.offsetWidth; // force reflow to restart animation
+        el.classList.add("flip");
+    }
+}
+
+// Update every second
 updateCountdown();
-setInterval(updateCountdown, 1000);
+const timerInterval = setInterval(updateCountdown, 1000);
+
+// Optional: Smooth scroll for nav links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener("click", function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute("href")).scrollIntoView({
+            behavior: "smooth"
+        });
+    });
+});
