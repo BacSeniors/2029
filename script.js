@@ -1,12 +1,14 @@
-// Mobile Menu Toggle
-document.getElementById('menu-toggle').addEventListener('click', function() {
-    document.getElementById('mobile-menu').classList.toggle('active');
-});
+// Mobile menu toggle (if you have a mobile menu)
+const menuToggle = document.getElementById('menu-toggle');
+const mobileMenu = document.getElementById('mobile-menu');
 
-// Countdown Target Date - Sunday, 10 August 2025 at 12:00 PM
-const graduationDate = new Date("August 10, 2025 12:00:00").getTime();
+if (menuToggle) {
+    menuToggle.addEventListener('click', () => {
+        mobileMenu.classList.toggle('active');
+    });
+}
 
-// Function to animate flip change
+// Flip animation helper
 function animateFlip(id, newValue) {
     const element = document.getElementById(id);
     if (element.innerText !== newValue.toString().padStart(2, "0")) {
@@ -18,8 +20,9 @@ function animateFlip(id, newValue) {
     }
 }
 
-// Update Countdown Every Second
-setInterval(function () {
+// Countdown timer
+function updateCountdown() {
+    const graduationDate = new Date('August 10, 2025 12:00:00').getTime();
     const now = new Date().getTime();
     const distance = graduationDate - now;
 
@@ -32,11 +35,7 @@ setInterval(function () {
     animateFlip("hours", hours >= 0 ? hours : 0);
     animateFlip("minutes", minutes >= 0 ? minutes : 0);
     animateFlip("seconds", seconds >= 0 ? seconds : 0);
+}
 
-    if (distance < 0) {
-        animateFlip("days", 0);
-        animateFlip("hours", 0);
-        animateFlip("minutes", 0);
-        animateFlip("seconds", 0);
-    }
-}, 1000);
+updateCountdown();
+setInterval(updateCountdown, 1000);
