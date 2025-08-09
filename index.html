@@ -12,8 +12,9 @@
 <body class="bg-gray-50 text-gray-800">
 
   <!-- Header -->
-  <header class="bg-gradient-to-r from-blue-900 to-red-700 text-white shadow-lg">
+  <header class="bg-gradient-to-r from-blue-900 to-red-700 text-white shadow-lg relative">
     <div class="container mx-auto px-4 py-6 flex justify-between items-center">
+      <!-- Logo & Title -->
       <div class="flex items-center space-x-4">
         <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center">
           <i class="fas fa-graduation-cap text-2xl text-blue-900"></i>
@@ -23,6 +24,27 @@
           <p class="text-sm opacity-80">Your hub for announcements, events, and countdown</p>
         </div>
       </div>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden md:flex space-x-8">
+        <a href="#announcements" class="hover:underline">Announcements</a>
+        <a href="#events" class="hover:underline">Events</a>
+        <a href="#countdown" class="hover:underline">Countdown</a>
+        <a href="#contact" class="hover:underline">Contact</a>
+      </nav>
+
+      <!-- Mobile Menu Button -->
+      <button id="menu-toggle" class="md:hidden text-white focus:outline-none">
+        <i class="fas fa-bars text-2xl"></i>
+      </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden flex-col bg-white text-gray-800 md:hidden shadow-lg absolute left-0 right-0 top-full">
+      <a href="#announcements" class="px-4 py-2 border-b border-gray-200 hover:bg-gray-100">Announcements</a>
+      <a href="#events" class="px-4 py-2 border-b border-gray-200 hover:bg-gray-100">Events</a>
+      <a href="#countdown" class="px-4 py-2 border-b border-gray-200 hover:bg-gray-100">Countdown</a>
+      <a href="#contact" class="px-4 py-2 hover:bg-gray-100">Contact</a>
     </div>
   </header>
 
@@ -30,7 +52,7 @@
   <section class="bg-gradient-to-r from-blue-900 to-red-700 text-white py-16">
     <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
       <div class="md:w-1/2 mb-8 md:mb-0">
-        <h2 class="text-4xl font-bold mb-4">Welcome, BAC!</h2>
+        <h2 class="text-4xl font-bold mb-4 text-white">Welcome Back, BAC!</h2>
         <p class="text-lg mb-6">Let’s make this year unforgettable — stay updated with announcements, events, and our graduation countdown.</p>
         <a href="#events" class="bg-white text-gray-800 px-6 py-2 rounded-full font-semibold hover:bg-gray-200 transition">View Events</a>
       </div>
@@ -119,6 +141,14 @@
   <footer class="bg-gray-900 text-white py-6 text-center">
     <p>© 2025 Class of 2030. All rights reserved.</p>
   </footer>
+
+  <!-- Mobile Menu Script -->
+  <script>
+    document.getElementById('menu-toggle').addEventListener('click', function() {
+      const menu = document.getElementById('mobile-menu');
+      menu.classList.toggle('hidden');
+    });
+  </script>
 
 </body>
 </html>
