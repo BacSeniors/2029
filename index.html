@@ -3,197 +3,105 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome BAC</title>
+    <title>Class of 2030 - BAC School Hub</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
-        
-        :root {
-            --primary: #FF6B6B;
-            --secondary: #4ECDC4;
-            --accent: #FFE66D;
-            --dark: #292F36;
-            --light: #F7FFF7;
-        }
-        
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #f8fafc;
-        }
-        
-        .school-gradient {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-        }
-        
-        .countdown-box {
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-        }
-        
-        .nav-link {
-            position: relative;
-        }
-        
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: 0;
-            left: 0;
-            background-color: var(--accent);
-            transition: width 0.3s ease;
-        }
-        
-        .nav-link:hover::after {
-            width: 100%;
-        }
-
-        /* Flip animation */
-        .flip {
-            animation: flip 0.5s ease;
-        }
-
-        @keyframes flip {
-            0% {
-                transform: rotateX(0);
-            }
-            50% {
-                transform: rotateX(90deg);
-            }
-            100% {
-                transform: rotateX(0);
-            }
-        }
-
-        @media (max-width: 768px) {
-            .mobile-menu {
-                display: none;
-            }
-            
-            .mobile-menu.active {
-                display: flex;
-                flex-direction: column;
-                position: absolute;
-                top: 80px;
-                left: 0;
-                right: 0;
-                background: white;
-                z-index: 50;
-                padding: 1rem;
-                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            }
-        }
-    </style>
 </head>
 <body class="text-gray-800">
-    <!-- Header -->
+
+    <!-- Header with School Colors -->
     <header class="school-gradient text-white shadow-lg">
-        <div class="container mx-auto px-4 py-6 flex justify-between items-center">
-            <h1 class="text-3xl font-bold text-white">Welcome BAC</h1>
-            <nav class="hidden md:flex space-x-8">
-                <a href="#home" class="nav-link text-white font-medium">Home</a>
-                <a href="#events" class="nav-link text-white font-medium">Events</a>
-                <a href="#countdown" class="nav-link text-white font-medium">Countdown</a>
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLSfLQ4xCmJo_f8BK3JANWO8Ashedz9E_1lwMSgIkgmj28hbE7g/viewform?usp=header" target="_blank" class="nav-link text-white font-medium">Submit a Form</a>
-            </nav>
-            <button id="menu-toggle" class="md:hidden text-white">
-                <i class="fas fa-bars text-2xl"></i>
-            </button>
-        </div>
-        <div id="mobile-menu" class="mobile-menu md:hidden">
-            <a href="#home" class="py-2 text-gray-800 font-medium">Home</a>
-            <a href="#events" class="py-2 text-gray-800 font-medium">Events</a>
-            <a href="#countdown" class="py-2 text-gray-800 font-medium">Countdown</a>
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSfLQ4xCmJo_f8BK3JANWO8Ashedz9E_1lwMSgIkgmj28hbE7g/viewform?usp=header" target="_blank" class="py-2 text-gray-800 font-medium">Submit a Form</a>
+        <div class="container mx-auto px-4 py-6">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-4">
+                    <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center">
+                        <i class="fas fa-graduation-cap text-2xl" style="color: var(--primary);"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-2xl font-bold text-white">Welcome BAC</h1>
+                        <p class="text-sm opacity-80">BAC</p>
+                    </div>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#home" class="nav-link text-white font-medium">Home</a>
+                    <a href="#events" class="nav-link text-white font-medium">Events</a>
+                    <a href="#news" class="nav-link text-white font-medium">News</a>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <button id="menu-toggle" class="md:hidden text-white focus:outline-none">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+
+            <!-- Mobile Navigation -->
+            <div id="mobile-menu" class="mobile-menu md:hidden">
+                <a href="#home" class="py-2 text-white font-medium">Home</a>
+                <a href="#events" class="py-2 text-white font-medium">Events</a>
+                <a href="#news" class="py-2 text-white font-medium">News</a>
+            </div>
         </div>
     </header>
 
-    <!-- Hero -->
-    <section id="home" class="school-gradient text-white py-16 text-center">
-        <h2 class="text-4xl font-bold mb-4">Our Journey Together</h2>
-        <p class="text-lg">Learning, growing, and making memories at BAC</p>
+    <!-- Hero Section -->
+    <section id="home" class="school-gradient text-white py-16">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-10 md:mb-0">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">Our School Journey</h2>
+                <p class="text-xl mb-6">Learning, growing, and making memories together at BAC!</p>
+            </div>
+        </div>
     </section>
 
-    <!-- Countdown -->
-    <section id="countdown" class="bg-gray-100 py-12">
-        <div class="container mx-auto px-4 text-center">
-            <h2 class="text-3xl font-bold mb-8">Countdown to August 10, 2025</h2>
-            <div class="flex justify-center space-x-4">
+    <!-- Countdown Timer -->
+    <section id="countdown" class="py-16 bg-white fade-in">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-8">🎓 Graduation Countdown</h2>
+            <div class="flex justify-center space-x-6 text-center">
                 <div class="countdown-box rounded-lg p-4 w-20">
-                    <div id="days" class="text-3xl font-bold">00</div>
+                    <div id="days" class="text-4xl font-bold">00</div>
                     <div class="text-sm">Days</div>
                 </div>
                 <div class="countdown-box rounded-lg p-4 w-20">
-                    <div id="hours" class="text-3xl font-bold">00</div>
+                    <div id="hours" class="text-4xl font-bold">00</div>
                     <div class="text-sm">Hours</div>
                 </div>
                 <div class="countdown-box rounded-lg p-4 w-20">
-                    <div id="minutes" class="text-3xl font-bold">00</div>
+                    <div id="minutes" class="text-4xl font-bold">00</div>
                     <div class="text-sm">Minutes</div>
                 </div>
                 <div class="countdown-box rounded-lg p-4 w-20">
-                    <div id="seconds" class="text-3xl font-bold">00</div>
+                    <div id="seconds" class="text-4xl font-bold">00</div>
                     <div class="text-sm">Seconds</div>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Events -->
+    <section id="events" class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-8">Upcoming Events</h2>
+            <p class="text-center">Event details go here...</p>
+        </div>
+    </section>
+
+    <!-- News -->
+    <section id="news" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-8">News & Announcements</h2>
+            <p class="text-center">News updates go here...</p>
+        </div>
+    </section>
+
     <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-6 text-center">
-        <p>&copy; 2025 BAC. All rights reserved.</p>
+    <footer class="bg-gray-900 text-white py-8 text-center">
+        <p>&copy; 2030 BAC. All rights reserved.</p>
     </footer>
 
-    <script>
-        // Mobile Menu Toggle
-        document.getElementById('menu-toggle').addEventListener('click', function () {
-            document.getElementById('mobile-menu').classList.toggle('active');
-        });
-
-        // Countdown Target Date - Sunday, 10 August 2025 at 12:00 PM
-        const graduationDate = new Date("August 10, 2025 12:00:00").getTime();
-
-        // Function to apply flip animation
-        function animateFlip(id, newValue) {
-            const element = document.getElementById(id);
-            if (element.innerText !== newValue.toString().padStart(2, "0")) {
-                element.classList.add("flip");
-                setTimeout(() => {
-                    element.innerText = newValue.toString().padStart(2, "0");
-                    element.classList.remove("flip");
-                }, 250);
-            }
-        }
-
-        // Update Countdown Every Second
-        const countdownFunction = setInterval(function () {
-            const now = new Date().getTime();
-            const distance = graduationDate - now;
-
-            // Time calculations
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-            // Animate values if they change
-            animateFlip("days", days >= 0 ? days : 0);
-            animateFlip("hours", hours >= 0 ? hours : 0);
-            animateFlip("minutes", minutes >= 0 ? minutes : 0);
-            animateFlip("seconds", seconds >= 0 ? seconds : 0);
-
-            // If the countdown is over
-            if (distance < 0) {
-                clearInterval(countdownFunction);
-                animateFlip("days", 0);
-                animateFlip("hours", 0);
-                animateFlip("minutes", 0);
-                animateFlip("seconds", 0);
-            }
-        }, 1000);
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
