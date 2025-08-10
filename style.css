@@ -1,110 +1,21 @@
-/* Base styles */
+/* General styles */
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: #f8fafc;
-    margin: 0;
-    padding: 0;
 }
 
-:root {
-    --primary: #FF6B6B; /* pinkish red */
-    --secondary: #4ECDC4; /* teal */
-    --accent: #FFE66D; /* yellow */
-    --dark: #292F36;
-    --light: #F7FFF7;
+/* Button Hover Effect */
+button, .btn, a.button-link {
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
-
-/* School gradient */
-.school-gradient {
-    background: linear-gradient(135deg, var(--primary), var(--secondary));
-}
-
-/* Countdown styles */
-.countdown-box {
-    background: rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-}
-
-/* Flip animation for countdown numbers */
-.flip {
-    animation: flip 0.5s ease forwards;
-}
-
-@keyframes flip {
-    0% {
-        transform: rotateX(0);
-    }
-    50% {
-        transform: rotateX(-90deg);
-    }
-    100% {
-        transform: rotateX(0);
-    }
-}
-
-/* Gallery items hover (if used) */
-.gallery-item {
-    transition: all 0.3s ease;
-}
-.gallery-item:hover {
-    transform: scale(1.03);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-}
-
-/* Poll options hover */
-.poll-option {
-    transition: all 0.2s ease;
-}
-.poll-option:hover {
+button:hover, .btn:hover, a.button-link:hover {
+    background-color: #4ECDC4; /* Matches your school-gradient secondary color */
     transform: translateY(-2px);
 }
 
-/* Navigation underline animation */
-.nav-link {
-    position: relative;
-}
-.nav-link::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    bottom: 0;
-    left: 0;
-    background-color: var(--accent);
-    transition: width 0.3s ease;
-}
-.nav-link:hover::after {
-    width: 100%;
-}
-
-/* Buttons hover effects */
-a, button {
-    transition: all 0.3s ease;
-}
-
-a.bg-white:hover {
-    background-color: var(--secondary) !important;
-    color: white !important;
-}
-
-a.border-2:hover {
-    background-color: var(--primary) !important;
-    border-color: var(--primary) !important;
-    color: white !important;
-}
-
-a.bg-gray-800:hover {
-    background-color: var(--primary) !important;
-}
-
-/* Mobile menu */
+/* Mobile Menu */
 @media (max-width: 768px) {
     .mobile-menu {
         display: none;
-    }
-    .mobile-menu.active {
-        display: flex;
         flex-direction: column;
         position: absolute;
         top: 80px;
@@ -115,4 +26,21 @@ a.bg-gray-800:hover {
         padding: 1rem;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
+    .mobile-menu.active {
+        display: flex;
+    }
+}
+
+/* Countdown Animation */
+.countdown-box {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 1rem;
+    border-radius: 10px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+.countdown-box:hover {
+    transform: scale(1.05);
 }
