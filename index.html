@@ -1,84 +1,201 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome BAC</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Class of 2030</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+  <script defer src="script.js"></script>
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.8s ease-out;
+    }
+    .fade-in.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
 </head>
-<body>
+<body class="bg-gray-50 text-gray-800">
 
-<!-- Header -->
-<header class="school-gradient text-white shadow-lg">
-    <div class="container">
-        <div class="flex justify-between items-center nav-container">
-            <div class="flex items-center space-x-4">
-                <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center">
-                    <i class="fas fa-graduation-cap text-2xl" style="color: var(--primary);"></i>
-                </div>
-                <div>
-                    <h1 class="text-2xl font-bold">Welcome BAC</h1>
-                    <p class="text-sm opacity-80">Class of 2030</p>
-                </div>
-            </div>
-
-            <!-- Desktop Navigation -->
-            <nav class="desktop-nav">
-                <a href="#home" class="nav-link">Home</a>
-                <a href="#events" class="nav-link">Events</a>
-                <a href="#news" class="nav-link">News</a>
-            </nav>
+  <!-- Header -->
+  <header class="bg-gradient-to-r from-blue-900 to-red-700 text-white shadow-lg relative fade-in" data-delay="0">
+    <div class="container mx-auto px-4 py-6 flex justify-between items-center">
+      <div class="flex items-center space-x-4">
+        <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center">
+          <i class="fas fa-graduation-cap text-2xl text-blue-900"></i>
         </div>
-    </div>
-</header>
-
-<!-- Hero Section -->
-<section id="home" class="school-gradient text-white hero-section">
-    <div class="container flex-col md:flex-row items-center">
-        <div class="hero-text">
-            <h2 class="text-4xl md:text-5xl font-bold mb-4">Our School Journey</h2>
-            <p class="text-xl mb-6">Learning, growing, and making memories together at BAC!</p>
-            <div class="flex space-x-4">
-                <a href="#events" class="btn-primary">View Events</a>
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLSfLQ4xCmJo_f8BK3JANWO8Ashedz9E_1lwMSgIkgmj28hbE7g/viewform?usp=header" target="_blank" class="btn-secondary">Submit Form</a>
-            </div>
+        <div>
+          <h1 class="text-2xl font-bold">Class of 2030</h1>
+          <p class="text-sm opacity-80">Your hub for announcements, events, and countdown</p>
         </div>
-    </div>
-</section>
+      </div>
 
-<!-- Countdown -->
-<section class="bg-gray-100 py-12">
-    <div class="container">
-        <h2 class="text-3xl font-bold text-center mb-8">Countdown to Graduation</h2>
-        <div class="countdown-container">
-            <div class="countdown-box">
-                <span id="days" class="flip">00</span>
-                <div class="label">Days</div>
-            </div>
-            <div class="countdown-box">
-                <span id="hours" class="flip">00</span>
-                <div class="label">Hours</div>
-            </div>
-            <div class="countdown-box">
-                <span id="minutes" class="flip">00</span>
-                <div class="label">Minutes</div>
-            </div>
-            <div class="countdown-box">
-                <span id="seconds" class="flip">00</span>
-                <div class="label">Seconds</div>
-            </div>
+      <nav class="hidden md:flex space-x-8">
+        <a href="#announcements" class="hover:underline">Announcements</a>
+        <a href="#events" class="hover:underline">Events</a>
+        <a href="#countdown" class="hover:underline">Countdown</a>
+        <a href="#contact" class="hover:underline">Contact</a>
+      </nav>
+
+      <button id="menu-toggle" class="md:hidden text-white focus:outline-none">
+        <i class="fas fa-bars text-2xl"></i>
+      </button>
+    </div>
+
+    <div id="mobile-menu" class="hidden flex-col bg-white text-gray-800 md:hidden shadow-lg absolute left-0 right-0 top-full">
+      <a href="#announcements" class="px-4 py-2 border-b border-gray-200 hover:bg-gray-100">Announcements</a>
+      <a href="#events" class="px-4 py-2 border-b border-gray-200 hover:bg-gray-100">Events</a>
+      <a href="#countdown" class="px-4 py-2 border-b border-gray-200 hover:bg-gray-100">Countdown</a>
+      <a href="#contact" class="px-4 py-2 hover:bg-gray-100">Contact</a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="bg-gradient-to-r from-blue-900 to-red-700 text-white py-16 fade-in" data-delay="0.1">
+    <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
+      <div class="md:w-1/2 mb-8 md:mb-0 fade-in" data-delay="0.2">
+        <h2 class="text-4xl font-bold mb-4 text-white">Welcome Back, BAC!</h2>
+        <p class="text-lg mb-6">Let’s make this year unforgettable — stay updated with announcements, events, and our graduation countdown.</p>
+        <a href="#events" class="bg-white text-gray-800 px-6 py-2 rounded-full font-semibold hover:bg-gray-200 transition">View Events</a>
+      </div>
+      <div class="md:w-1/2 flex justify-center fade-in" data-delay="0.3">
+        <img src="https://cdn-icons-png.flaticon.com/512/3135/3135773.png" alt="Graduation" class="w-64">
+      </div>
+    </div>
+  </section>
+
+  <!-- Announcements -->
+  <section id="announcements" class="py-16 bg-white fade-in" data-delay="0.1">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-12 fade-in" data-delay="0.2">📢 Announcements</h2>
+      <div class="space-y-4 max-w-3xl mx-auto">
+        <div class="bg-gray-50 p-4 rounded-lg shadow fade-in" data-delay="0.3">
+          Welcome back to school! Let's make this year unforgettable.
         </div>
+        <div class="bg-gray-50 p-4 rounded-lg shadow fade-in" data-delay="0.4">
+          Senior photos will be taken next week. Stay tuned for your schedule.
+        </div>
+        <div class="bg-gray-50 p-4 rounded-lg shadow fade-in" data-delay="0.5">
+          Submit yearbook quotes by the end of this month.
+        </div>
+      </div>
     </div>
-</section>
+  </section>
 
-<!-- Footer -->
-<footer class="bg-gray-900 text-white py-12">
-    <div class="container text-center">
-        <p>&copy; 2030 BAC. All rights reserved.</p>
+  <!-- Events -->
+  <section id="events" class="py-16 bg-gray-100 fade-in" data-delay="0.1">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-12 fade-in" data-delay="0.2">📅 Upcoming Events</h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-white rounded-lg shadow p-6 fade-in" data-delay="0.3">
+          <h3 class="font-bold text-lg mb-2">🏆 Sports Day</h3>
+          <p class="text-gray-600 mb-2">September 20, 2025</p>
+          <p class="text-gray-500">A day of fun, competition, and school spirit!</p>
+        </div>
+        <div class="bg-white rounded-lg shadow p-6 fade-in" data-delay="0.4">
+          <h3 class="font-bold text-lg mb-2">🎤 Talent Show</h3>
+          <p class="text-gray-600 mb-2">October 10, 2025</p>
+          <p class="text-gray-500">Show off your skills in our annual talent show.</p>
+        </div>
+        <div class="bg-white rounded-lg shadow p-6 fade-in" data-delay="0.5">
+          <h3 class="font-bold text-lg mb-2">🎓 Graduation Ceremony</h3>
+          <p class="text-gray-600 mb-2">June 15, 2030</p>
+          <p class="text-gray-500">Celebrate the end of our journey together.</p>
+        </div>
+      </div>
     </div>
-</footer>
+  </section>
 
-<script src="script.js"></script>
-<script src="https://kit.fontawesome.com/a2d9d5a64d.js" crossorigin="anonymous"></script>
+  <!-- Countdown -->
+  <section id="countdown" class="py-16 bg-white fade-in" data-delay="0.1">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-8 fade-in" data-delay="0.2">🎓 Graduation Countdown</h2>
+      <div class="flex justify-center space-x-6 text-center">
+        <div class="backdrop-filter backdrop-blur-md bg-white/20 border border-white/30 rounded-lg shadow-lg p-4 w-20 transform hover:scale-105 transition fade-in" data-delay="0.3">
+          <div id="days" class="text-4xl font-bold">00</div>
+          <div class="text-sm text-gray-200">Days</div>
+        </div>
+        <div class="backdrop-filter backdrop-blur-md bg-white/20 border border-white/30 rounded-lg shadow-lg p-4 w-20 transform hover:scale-105 transition fade-in" data-delay="0.4">
+          <div id="hours" class="text-4xl font-bold">00</div>
+          <div class="text-sm text-gray-200">Hours</div>
+        </div>
+        <div class="backdrop-filter backdrop-blur-md bg-white/20 border border-white/30 rounded-lg shadow-lg p-4 w-20 transform hover:scale-105 transition fade-in" data-delay="0.5">
+          <div id="minutes" class="text-4xl font-bold">00</div>
+          <div class="text-sm text-gray-200">Minutes</div>
+        </div>
+        <div class="backdrop-filter backdrop-blur-md bg-white/20 border border-white/30 rounded-lg shadow-lg p-4 w-20 transform hover:scale-105 transition fade-in" data-delay="0.6">
+          <div id="seconds" class="text-4xl font-bold">00</div>
+          <div class="text-sm text-gray-200">Seconds</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="py-16 bg-gray-100 fade-in" data-delay="0.1">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-3xl font-bold mb-6 fade-in" data-delay="0.2">📬 Contact Us</h2>
+      <p class="mb-4 fade-in" data-delay="0.3">
+        Have something to share? 
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfLQ4xCmJo_f8BK3JANWO8Ashedz9E_1lwMSgIkgmj28hbE7g/viewform?usp=header" 
+           target="_blank" 
+           class="text-blue-600 font-semibold hover:underline">
+           Submit a form
+        </a> 
+        or reach out to a senior committee member.
+      </p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white py-6 text-center fade-in" data-delay="0.1">
+    <p>© 2025 Class of 2030. All rights reserved.</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    // Mobile Menu
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuLinks = mobileMenu.querySelectorAll('a');
+
+    menuToggle.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    menuLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+      });
+    });
+
+    // Scroll Animation with Delay
+    const faders = document.querySelectorAll('.fade-in');
+    const appearOptions = { threshold: 0.1 };
+
+    const appearOnScroll = new IntersectionObserver(function(entries, observer) {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const delay = entry.target.getAttribute('data-delay') || 0;
+        setTimeout(() => {
+          entry.target.classList.add('show');
+        }, parseFloat(delay) * 1000);
+        observer.unobserve(entry.target);
+      });
+    }, appearOptions);
+
+    faders.forEach(fader => {
+      appearOnScroll.observe(fader);
+    });
+  </script>
+
 </body>
 </html>
