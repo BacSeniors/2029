@@ -44,3 +44,29 @@ button:hover, .btn:hover, a.button-link:hover {
 .countdown-box:hover {
     transform: scale(1.05);
 }
+/* Ensure mobile menu is visible when `.active` and above other elements */
+.mobile-menu {
+  display: none;          /* default hidden on small screens */
+  z-index: 9999;
+  pointer-events: auto;
+}
+.mobile-menu.active {
+  display: flex !important; /* show when active */
+}
+
+/* Ensure hamburger button is on top and clickable */
+#menu-toggle {
+  z-index: 10000;
+  position: relative;
+}
+
+/* If using 'hidden' Tailwind class, above toggling keeps compatibility.
+   Also ensure mobile-menu positioning (adjust top as needed) */
+.mobile-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+}
