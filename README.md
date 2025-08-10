@@ -1,4 +1,4 @@
-# Class of 2030 Website
+# Class of 2029 Website
 
 This is the official website for the Class of 2030.  
 It includes:
