@@ -3,7 +3,13 @@ const countdownDate = new Date("August 10, 2025 00:00:00").getTime();
 
 function updateCountdown() {
     const now = new Date().getTime();
-    const distance = countdownDate - now;
+    let distance = countdownDate - now;
+
+    // Stop at zero and prevent negative numbers
+    if (distance <= 0) {
+        distance = 0;
+        clearInterval(timerInterval);
+    }
 
     const days = Math.floor(distance / (1000 * 60 * 60 * 24));
     const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
@@ -14,11 +20,6 @@ function updateCountdown() {
     setFlipValue("hours", hours);
     setFlipValue("minutes", minutes);
     setFlipValue("seconds", seconds);
-
-    if (distance < 0) {
-        clearInterval(timerInterval);
-        document.getElementById("countdown").innerHTML = "Event Started!";
-    }
 }
 
 // Adds flip animation when value changes
@@ -34,16 +35,27 @@ function setFlipValue(id, newValue) {
     }
 }
 
-// Update every second
-updateCountdown();
-const timerInterval = setInterval(updateCountdown, 1000);
+// Mobile Menu Toggle
+document.getElementById("menu-toggle").addEventListener("click", function () {
+    document.getElementById("mobile-menu").classList.toggle("active");
+});
 
-// Optional: Smooth scroll for nav links
+// Smooth scrolling for navigation links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener("click", function (e) {
         e.preventDefault();
+
         document.querySelector(this.getAttribute("href")).scrollIntoView({
             behavior: "smooth"
         });
+
+        // Close mobile menu if open
+        if (document.getElementById("mobile-menu").classList.contains("active")) {
+            document.getElementById("mobile-menu").classList.remove("active");
+        }
     });
 });
+
+// Start countdown
+updateCountdown();
+const timerInterval = setInterval(updateCountdown, 1000);
