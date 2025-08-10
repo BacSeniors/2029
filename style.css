@@ -1,72 +1,16 @@
-/* General styles */
-body {
-    font-family: 'Poppins', sans-serif;
-}
-
-/* Button Hover Effect */
-button, .btn, a.button-link {
-    transition: background-color 0.3s ease, transform 0.2s ease;
-}
-button:hover, .btn:hover, a.button-link:hover {
-    background-color: #4ECDC4; /* Matches your school-gradient secondary color */
-    transform: translateY(-2px);
-}
-
-/* Mobile Menu */
-@media (max-width: 768px) {
-    .mobile-menu {
-        display: none;
-        flex-direction: column;
-        position: absolute;
-        top: 80px;
-        left: 0;
-        right: 0;
-        background: white;
-        z-index: 50;
-        padding: 1rem;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
-    .mobile-menu.active {
-        display: flex;
-    }
-}
-
-/* Countdown Animation */
-.countdown-box {
-    background: rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
+.mobile-menu {
+    display: none;
+    flex-direction: column;
+    background: white;
+    position: absolute;
+    top: 80px;
+    left: 0;
+    right: 0;
     padding: 1rem;
-    border-radius: 10px;
-    text-align: center;
-    transition: transform 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    z-index: 999;
 }
-.countdown-box:hover {
-    transform: scale(1.05);
-}
-/* Ensure mobile menu is visible when `.active` and above other elements */
-.mobile-menu {
-  display: none;          /* default hidden on small screens */
-  z-index: 9999;
-  pointer-events: auto;
-}
+
 .mobile-menu.active {
-  display: flex !important; /* show when active */
-}
-
-/* Ensure hamburger button is on top and clickable */
-#menu-toggle {
-  z-index: 10000;
-  position: relative;
-}
-
-/* If using 'hidden' Tailwind class, above toggling keeps compatibility.
-   Also ensure mobile-menu positioning (adjust top as needed) */
-.mobile-menu {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  right: 0;
-  background: white;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+    display: flex !important;
 }
