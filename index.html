@@ -9,9 +9,7 @@
   <link rel="stylesheet" href="style.css">
   <script defer src="script.js"></script>
   <style>
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
     .fade-in {
       opacity: 0;
       transform: translateY(20px);
@@ -44,17 +42,6 @@
         <a href="#countdown" class="hover:underline">Countdown</a>
         <a href="#contact" class="hover:underline">Contact</a>
       </nav>
-
-      <button id="menu-toggle" class="md:hidden text-white focus:outline-none">
-        <i class="fas fa-bars text-2xl"></i>
-      </button>
-    </div>
-
-    <div id="mobile-menu" class="hidden flex-col bg-white text-gray-800 md:hidden shadow-lg absolute left-0 right-0 top-full">
-      <a href="#announcements" class="px-4 py-2 border-b border-gray-200 hover:bg-gray-100">Announcements</a>
-      <a href="#events" class="px-4 py-2 border-b border-gray-200 hover:bg-gray-100">Events</a>
-      <a href="#countdown" class="px-4 py-2 border-b border-gray-200 hover:bg-gray-100">Countdown</a>
-      <a href="#contact" class="px-4 py-2 hover:bg-gray-100">Contact</a>
     </div>
   </header>
 
@@ -168,21 +155,6 @@
 
   <!-- Scripts -->
   <script>
-    // Mobile Menu
-    const menuToggle = document.getElementById('menu-toggle');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const menuLinks = mobileMenu.querySelectorAll('a');
-
-    menuToggle.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
-    });
-
-    menuLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        mobileMenu.classList.add('hidden');
-      });
-    });
-
     // Scroll Animation with Delay
     const faders = document.querySelectorAll('.fade-in');
     const appearOptions = { threshold: 0.1 };
