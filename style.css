@@ -1,58 +1,52 @@
-/* === Base Styles === */
+/* ===== Base Styles ===== */
 body {
     font-family: 'Poppins', sans-serif;
     background-color: #f8fafc;
     margin: 0;
     padding: 0;
+    color: #333;
 }
 
-/* Hide the hamburger menu completely */
-#menu-toggle {
-    display: none !important;
-    visibility: hidden !important;
-}
-
-/* === Fade-in Animation === */
-.fade-in {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
-}
-
-.fade-in.show {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* === Button Hover Effect === */
-.main-cta {
-    background: linear-gradient(90deg, #ff6b6b, #4ecdc4);
-    color: white;
-    padding: 0.75rem 1.5rem;
-    border-radius: 999px;
-    font-weight: bold;
-    transition: all 0.3s ease;
-    display: inline-block;
-    text-align: center;
-}
-
-.main-cta:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 15px rgba(255, 107, 107, 0.6), 0 0 15px rgba(78, 205, 196, 0.6);
-}
-
-/* Staggered delays using nth-child */
-.stagger-fade-in:nth-child(1) { transition-delay: 0s; }
-.stagger-fade-in:nth-child(2) { transition-delay: 0.2s; }
-.stagger-fade-in:nth-child(3) { transition-delay: 0.4s; }
-.stagger-fade-in:nth-child(4) { transition-delay: 0.6s; }
-.stagger-fade-in:nth-child(5) { transition-delay: 0.8s; }
-.stagger-fade-in:nth-child(6) { transition-delay: 1s; }
-
-/* Optional - make sure countdown boxes have same style */
+/* ===== Countdown Styling ===== */
 .countdown-box {
     background: rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 8px;
+    border-radius: 10px;
+}
+
+/* ===== Buttons ===== */
+button, a.button, .main-cta {
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+button:hover, a.button:hover, .main-cta:hover {
+    transform: scale(1.05);
+    filter: brightness(1.1);
+}
+
+/* ===== Fade-in Animation ===== */
+.fade-in, .stagger-fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in.show, .stagger-fade-in.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ===== Utility ===== */
+.text-white {
+    color: white;
+}
+
+.bg-gradient {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+}
+
+.school-gradient {
+    background: linear-gradient(135deg, #FF6B6B, #4ECDC4);
 }
