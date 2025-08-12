@@ -12,9 +12,16 @@ body {
     background: rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 10px;
+    border-radius: 8px;
     text-align: center;
-    padding: 10px;
+    padding: 0.75rem;
+    min-width: 60px;
+}
+
+.countdown-box span {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: bold;
 }
 
 /* ===== Buttons ===== */
@@ -23,15 +30,27 @@ button, a.button, .main-cta {
     cursor: pointer;
 }
 
-button:hover, a.button:hover, .main-cta:hover {
+.main-cta {
+    background: white;
+    color: #292F36;
+    padding: 0.6rem 1.2rem;
+    border-radius: 999px;
+    display: inline-block;
+    font-weight: bold;
+}
+
+.main-cta:hover {
+    background: linear-gradient(135deg, #FF6B6B, #4ECDC4);
+    color: white;
     transform: scale(1.05);
-    filter: brightness(1.1);
+    box-shadow: 0 0 15px rgba(255, 107, 107, 0.6),
+                0 0 15px rgba(78, 205, 196, 0.6);
 }
 
 /* ===== Fade-in Animation ===== */
 .fade-in, .stagger-fade-in {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(20px);
     transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
@@ -51,4 +70,10 @@ button:hover, a.button:hover, .main-cta:hover {
 
 .school-gradient {
     background: linear-gradient(135deg, #FF6B6B, #4ECDC4);
+}
+
+/* ===== Hide Hamburger Menu Completely ===== */
+#menu-toggle {
+    display: none !important;
+    visibility: hidden !important;
 }
