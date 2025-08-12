@@ -1,81 +1,50 @@
-// script.js — robust stop-countdown + fade-in/stagger
-document.addEventListener("DOMContentLoaded", () => {
+// ===== Countdown always at zero =====
+function updateCountdown() {
+    document.getElementById('days').innerHTML = '00';
+    document.getElementById('hours').innerHTML = '00';
+    document.getElementById('minutes').innerHTML = '00';
+    document.getElementById('seconds').innerHTML = '00';
+}
 
-  /* ---------------------- Remove hamburger (if present) ---------------------- */
-  const menuButton = document.getElementById("menu-toggle");
-  if (menuButton) {
-    menuButton.remove();
-  }
+// Set countdown to zero immediately
+updateCountdown();
 
-  /* ---------------------- Clear known countdown intervals ------------------- */
-  // Clear common globals if present
-  try { if (window._countdownInterval) { clearInterval(window._countdownInterval); window._countdownInterval = null; } } catch(e){}
-  try { if (window.timerInterval) { clearInterval(window.timerInterval); window.timerInterval = null; } } catch(e){}
-  try { if (window.countdownFunction) { clearInterval(window.countdownFunction); window.countdownFunction = null; } } catch(e){}
+// ===== Fade-in & Stagger Animation =====
+function handleScrollAnimations() {
+    const elements = document.querySelectorAll('.fade-in, .stagger-fade-in');
 
-  // Best-effort: clear a range of interval IDs (stops other stray intervals that update the countdown)
-  // NOTE: this is intentionally limited to 1..1000 to avoid extreme side effects.
-  for (let i = 1; i < 1000; i++) {
-    try { clearInterval(i); } catch (e) { /* ignore */ }
-  }
+    elements.forEach((el, index) => {
+        const rect = el.getBoundingClientRect();
+        const delay = el.classList.contains('stagger-fade-in') ? index * 150 : 0;
 
-  /* ---------------------- Force countdown to always read 00 ----------------- */
-  const COUNT_IDS = ["days", "hours", "minutes", "seconds"];
-
-  function setAllZero() {
-    COUNT_IDS.forEach(id => {
-      const el = document.getElementById(id);
-      if (el) el.textContent = "00";
-    });
-  }
-
-  setAllZero(); // initial set
-
-  // MutationObserver — if another script tries to change these, immediately revert
-  const observer = new MutationObserver(mutations => {
-    mutations.forEach(m => {
-      // find parent element in case mutation is text node
-      const node = m.target.nodeType === 3 ? m.target.parentNode : m.target;
-      if (!node || !node.id) return;
-      if (COUNT_IDS.includes(node.id) && node.textContent !== "00") {
-        node.textContent = "00";
-      }
-    });
-  });
-
-  COUNT_IDS.forEach(id => {
-    const el = document.getElementById(id);
-    if (el) {
-      observer.observe(el, { characterData: true, childList: true, subtree: true });
-    }
-  });
-
-  /* ---------------------- Fade-in & staggered animation -------------------- */
-  const fadeElements = document.querySelectorAll(".fade-in, .stagger-fade-in");
-
-  function runFadeOnce() {
-    const triggerBottom = window.innerHeight * 0.85;
-    fadeElements.forEach((el, index) => {
-      const boxTop = el.getBoundingClientRect().top;
-      if (boxTop < triggerBottom && !el.classList.contains("show")) {
-        // If element uses stagger class, give it an increasing delay
-        if (el.classList.contains("stagger-fade-in")) {
-          el.style.transitionDelay = `${index * 0.15}s`;
+        if (rect.top < window.innerHeight - 100) {
+            setTimeout(() => {
+                el.classList.add('show');
+            }, delay);
         }
-        el.classList.add("show");
-      }
     });
-  }
+}
 
-  window.addEventListener("scroll", runFadeOnce, { passive: true });
-  window.addEventListener("resize", runFadeOnce);
-  // initial run
-  runFadeOnce();
+window.addEventListener('scroll', handleScrollAnimations);
+window.addEventListener('load', handleScrollAnimations);
 
-  /* ---------------------- Safety: fallback re-apply zeros periodically ---- */
-  // In case something slips past observer, re-apply zeros lightly every 5s (low cost)
-  setInterval(() => {
-    setAllZero();
-  }, 5000);
-
+// ===== Add Reserve Ticket Button to Winter Fest Card =====
+document.addEventListener('DOMContentLoaded', () => {
+    const eventCards = document.querySelectorAll('.event-card');
+    eventCards.forEach(card => {
+        const titleElement = card.querySelector('h3');
+        if (titleElement && titleElement.textContent.trim().toLowerCase() === 'winter fest') {
+            // Create button
+            const button = document.createElement('a');
+            button.href = 'https://docs.google.com/forms/d/e/1FAIpQLSeXr-qKyWSgJwvhld5ZYBXPhDX_ixU-JvLF5fzW1qv-VzZnIQ/viewform?usp=header';
+            button.textContent = 'Reserve Ticket';
+            button.target = '_blank';
+            button.className = 'reserve-btn';
+            // Append button after event description
+            const desc = card.querySelector('p');
+            if (desc) {
+                desc.insertAdjacentElement('afterend', button);
+            }
+        }
+    });
 });
