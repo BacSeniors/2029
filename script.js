@@ -1,3 +1,11 @@
+// ===== Remove Hamburger Menu =====
+document.addEventListener("DOMContentLoaded", () => {
+    const menuToggle = document.getElementById("menu-toggle");
+    const mobileMenu = document.getElementById("mobile-menu");
+    if (menuToggle) menuToggle.remove();
+    if (mobileMenu) mobileMenu.remove();
+});
+
 // ===== Countdown always at zero =====
 function updateCountdown() {
     document.getElementById('days').innerHTML = '00';
